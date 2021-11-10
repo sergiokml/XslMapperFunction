@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Aliencube.XslMapper.FunctionApp.Configurations;
+﻿using Aliencube.XslMapper.FunctionApp.Configurations;
 using Aliencube.XslMapper.FunctionApp.Exceptions;
 using Aliencube.XslMapper.FunctionApp.Extensions;
 
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+
+using System;
+using System.Threading.Tasks;
 
 namespace Aliencube.XslMapper.FunctionApp.Helpers
 {
@@ -35,7 +35,7 @@ namespace Aliencube.XslMapper.FunctionApp.Helpers
             {
                 throw new CloudStorageNotFoundException();
             }
-            var blob = await account.CreateBlobClient()
+            CloudBlockBlob blob = await account.CreateBlobClient()
                                     .GetBlobContainerAsync(container)
                                     .GetBlockBlobAsync(filename, directory)
                                     .ConfigureAwait(false);
